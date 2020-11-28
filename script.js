@@ -11,21 +11,20 @@ var backgroundImg = new Array(
 	"images/bg5.png",
 	);
 
-let i = 0;
+let i = 1;
 next.onclick = function(){
-	if (i < 4) {
-		hero.style.backgroundImage = 'url("'+backgroundImg[i+1]+'")';
-		thumbnail[i+1].classList.add("active");
-		thumbnail[i].classList.remove("active");
+	if (i==backgroundImg.length){
+		i = 0;
+		hero.style.backgroundImage = 'url("'+backgroundImg[i]+'")';
+		thumbnail[0].classList.add("active");
+		thumbnail[backgroundImg.length-1].classList.remove("active");
 		i++;
+		return;
 	}
-}
-
-prev.onclick = function(){
-	if (i > 0) {
-		hero.style.backgroundImage = 'url("'+backgroundImg[i-1]+'")';
-		thumbnail[i-1].classList.add("active");
-		thumbnail[i].classList.remove("active");
-		i--;
+	if (i<backgroundImg.length && i>0) {
+		hero.style.backgroundImage = 'url("'+backgroundImg[i]+'")';
+		thumbnail[i].classList.add("active");
+		thumbnail[i-1].classList.remove("active");
+		i++;
 	}
 }
